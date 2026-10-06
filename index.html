@@ -37,7 +37,9 @@ letter-spacing:2px
 .center{text-align:center}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
+
 .hidden{display:none!important}
+
 .primary,.secondary{
 width:100%;
 border-radius:13px;
@@ -45,17 +47,24 @@ padding:15px;
 font-weight:800;
 margin-top:12px
 }
+
 .primary{
 border:0;
 background:#e50914;
 color:white
 }
-.primary:disabled{opacity:.45}
+
+.primary:disabled{
+opacity:.45;
+cursor:not-allowed
+}
+
 .secondary{
 border:1px solid #343946;
 background:#191c23;
 color:#fff
 }
+
 .top{
 position:fixed;
 top:0;
@@ -65,14 +74,17 @@ background:#0b0c0fee;
 padding:15px 22px;
 z-index:5
 }
+
 .stepwrap{
 width:min(720px,100%);
 padding-top:75px
 }
+
 .nav{
 display:flex;
 justify-content:space-between
 }
+
 .progress{
 height:7px;
 background:#252832;
@@ -80,11 +92,14 @@ border-radius:99px;
 overflow:hidden;
 margin-top:10px
 }
+
 .progress i{
 display:block;
 height:100%;
-background:#e50914
+background:#e50914;
+width:0%
 }
+
 .ad{
 height:230px;
 border:1px dashed #3c414d;
@@ -96,6 +111,7 @@ color:#777;
 margin:25px 0;
 background:#0d0f13
 }
+
 .username{
 font-size:30px;
 font-weight:900;
@@ -106,25 +122,30 @@ border-radius:14px;
 padding:20px;
 margin:20px 0
 }
+
 .admin{
 min-height:100vh;
 padding:30px
 }
+
 .adminbox{
 max-width:1050px;
 margin:auto
 }
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:18px
 }
+
 .panel{
 background:#111318;
 border:1px solid #252a33;
 border-radius:18px;
 padding:20px
 }
+
 .field{
 width:100%;
 margin:8px 0;
@@ -134,10 +155,12 @@ border:1px solid #343946;
 background:#0b0d11;
 color:#fff
 }
+
 .tabs{
 display:flex;
 gap:10px
 }
+
 .tab{
 flex:1;
 padding:12px;
@@ -146,6 +169,7 @@ border:1px solid #333;
 background:#151820;
 color:#fff
 }
+
 .active{
 background:#e50914!important
 }
@@ -154,20 +178,29 @@ background:#e50914!important
 
 <body>
 
+<!-- HOME -->
+
 <section id="home" class="screen">
+
 <div class="card center">
 
 <div class="logo">ADUNLOCK</div>
 
-<p class="muted">7 STEP ACCESS</p>
-
-<h1>Get your access username</h1>
-
 <p class="muted">
-Complete the steps and generate your temporary username.
+7 STEP ACCESS
 </p>
 
-<button class="primary" onclick="start()">
+<h1>
+Get your access username
+</h1>
+
+<p class="muted">
+Complete all 7 steps and generate your temporary username.
+</p>
+
+<button
+class="primary"
+onclick="start()">
 START NOW
 </button>
 
@@ -176,8 +209,11 @@ START NOW
 </p>
 
 </div>
+
 </section>
 
+
+<!-- STEPS -->
 
 <section id="steps" class="screen hidden">
 
@@ -186,8 +222,13 @@ START NOW
 <div class="top">
 
 <div class="nav">
+
 <b>ADUNLOCK</b>
-<span id="stepText"></span>
+
+<span id="stepText">
+Step 1 of 7
+</span>
+
 </div>
 
 <div class="progress">
@@ -196,9 +237,12 @@ START NOW
 
 </div>
 
+
 <div class="card">
 
-<h2 id="stepTitle"></h2>
+<h2 id="stepTitle">
+Complete Step 1
+</h2>
 
 <p class="muted">
 Please wait for the timer, then continue.
@@ -208,7 +252,11 @@ Please wait for the timer, then continue.
 ADVERTISEMENT AREA
 </div>
 
-<div class="center muted" id="timer"></div>
+<div
+class="center muted"
+id="timer">
+Continue available in 15 seconds
+</div>
 
 <button
 id="continueBtn"
@@ -225,21 +273,35 @@ BACK TO HOME
 </button>
 
 </div>
+
 </div>
+
 </section>
 
+
+<!-- DONE -->
 
 <section id="done" class="screen hidden">
 
 <div class="card center">
 
-<div class="logo">ADUNLOCK</div>
+<div class="logo">
+ADUNLOCK
+</div>
 
-<p class="muted">ACCESS READY</p>
+<p class="muted">
+ACCESS READY
+</p>
 
-<h1>Your username</h1>
+<h1>
+Your username
+</h1>
 
-<div id="username" class="username"></div>
+<div
+id="username"
+class="username">
+Generating...
+</div>
 
 <button
 class="primary"
@@ -259,19 +321,29 @@ onclick="goHome()">
 BACK TO HOME
 </button>
 
-<p id="copyMsg" class="muted"></p>
+<p
+id="copyMsg"
+class="muted">
+</p>
 
 </div>
+
 </section>
 
+
+<!-- ADMIN LOGIN -->
 
 <section id="adminLogin" class="screen hidden">
 
 <div class="card">
 
-<div class="logo">ADUNLOCK</div>
+<div class="logo">
+ADUNLOCK
+</div>
 
-<p class="muted">ADMIN PANEL</p>
+<p class="muted">
+ADMIN PANEL
+</p>
 
 <input
 id="adminUser"
@@ -296,8 +368,11 @@ style="color:#ff6b6b">
 </p>
 
 </div>
+
 </section>
 
+
+<!-- ADMIN -->
 
 <section id="admin" class="admin hidden">
 
@@ -307,7 +382,9 @@ style="color:#ff6b6b">
 
 <div>
 
-<div class="logo">ADUNLOCK</div>
+<div class="logo">
+ADUNLOCK
+</div>
 
 <p class="muted">
 ADMIN DASHBOARD
@@ -324,10 +401,11 @@ Logout
 
 <div class="grid">
 
-
 <div class="panel">
 
-<h2>Add Content</h2>
+<h2>
+Add Content
+</h2>
 
 <p class="muted">
 Choose where content will appear.
@@ -385,7 +463,9 @@ ADD CONTENT
 
 <div class="panel">
 
-<h2>Current Content</h2>
+<h2>
+Current Content
+</h2>
 
 <div
 id="contentList"
@@ -395,117 +475,137 @@ class="muted">
 </div>
 
 </div>
+
 </div>
+
 </section>
 
 
 <script>
 
-/* =========================================
-   BIRUXY BACKEND CONNECTION
-   ========================================= */
+/* ==========================================
+   IMPORTANT CONNECTION SETTINGS
+   ========================================== */
 
 const ACCESS_API =
 "https://biruxy-access-api.onrender.com";
 
-
-/* =========================================
-   MOVIE WEBSITE URL
-   =========================================
-   
-   IMPORTANT:
-   Movie Website banne ke baad
-   is URL ko uske Render URL se replace karna.
-*/
-
 const MOVIE_SITE =
-"https://YOUR-MOVIE-SITE.onrender.com";
+"https://biruxy-movie.onrender.com";
 
 
-</script>
+/* ==========================================
+   VARIABLES
+   ========================================== */
 
+let step = 1;
 
-<script>
+let seconds = 15;
 
-let step=1;
+let timerId = null;
 
-let seconds=15;
+let username = "";
 
-let timerId=null;
+let type = "MOVIES";
 
-let username='';
-
-let type='MOVIES';
-
-let items=JSON.parse(
-localStorage.getItem('adunlock_content')||'[]'
+let items =
+JSON.parse(
+localStorage.getItem("adunlock_content") || "[]"
 );
 
 
-const $=id =>
-document.getElementById(id);
+/* ==========================================
+   HELPER
+   ========================================== */
+
+function $(id){
+return document.getElementById(id);
+}
 
 
-/* SHOW SCREEN */
+/* ==========================================
+   SHOW SCREEN
+   ========================================== */
 
 function show(id){
 
 [
-'home',
-'steps',
-'done',
-'adminLogin',
-'admin'
-]
-.forEach(x =>
+"home",
+"steps",
+"done",
+"adminLogin",
+"admin"
+].forEach(function(x){
+
 $(x).classList.toggle(
-'hidden',
-x!==id
-)
+"hidden",
+x !== id
 );
+
+});
 
 }
 
 
-/* START */
+/* ==========================================
+   START
+   ========================================== */
 
 function start(){
 
-show('steps');
+clearInterval(timerId);
 
-step=1;
+step = 1;
+
+show("steps");
 
 startTimer();
 
 }
 
 
-/* TIMER */
+/* ==========================================
+   TIMER
+   ========================================== */
 
 function startTimer(){
 
 clearInterval(timerId);
 
-seconds=15;
+seconds = 15;
+
+const btn =
+$("continueBtn");
+
+btn.disabled = true;
+
+btn.style.opacity = "0.45";
 
 updateStep();
 
-$('continueBtn').disabled=true;
+updateTimer();
 
-timerId=setInterval(()=>{
+
+timerId =
+setInterval(function(){
 
 seconds--;
 
 updateTimer();
 
-if(seconds<=0){
+
+if(seconds <= 0){
 
 clearInterval(timerId);
 
-$('continueBtn').disabled=false;
+seconds = 0;
 
-$('timer').textContent=
-'You can continue now.';
+$("timer").textContent =
+"You can continue now.";
+
+btn.disabled = false;
+
+btn.style.opacity = "1";
 
 }
 
@@ -514,39 +614,58 @@ $('timer').textContent=
 }
 
 
-/* UPDATE STEP */
+/* ==========================================
+   UPDATE STEP
+   ========================================== */
 
 function updateStep(){
 
-$('stepText').textContent=
-`Step ${step} of 7`;
+$("stepText").textContent =
+"Step " + step + " of 7";
 
-$('bar').style.width=
-(step/7*100)+'%';
+$("bar").style.width =
+((step / 7) * 100) + "%";
 
-$('stepTitle').textContent=
-`Complete Step ${step}`;
-
-updateTimer();
+$("stepTitle").textContent =
+"Complete Step " + step;
 
 }
 
 
-/* UPDATE TIMER */
+/* ==========================================
+   UPDATE TIMER
+   ========================================== */
 
 function updateTimer(){
 
-$('timer').textContent=
-`Continue available in ${seconds} seconds`;
+if(seconds > 0){
+
+$("timer").textContent =
+"Continue available in " +
+seconds +
+" seconds";
+
+}
 
 }
 
 
-/* NEXT STEP */
+/* ==========================================
+   NEXT STEP
+   ========================================== */
 
 function nextStep(){
 
-if(step<7){
+const btn =
+$("continueBtn");
+
+
+if(btn.disabled){
+return;
+}
+
+
+if(step < 7){
 
 step++;
 
@@ -561,27 +680,29 @@ finish();
 }
 
 
-/* =========================================
-   GENERATE USERNAME FROM BACKEND
-   ========================================= */
+/* ==========================================
+   GENERATE USERNAME
+   ========================================== */
 
 async function finish(){
 
 clearInterval(timerId);
 
-$('username').textContent=
-'Generating...';
+$("username").textContent =
+"Generating...";
+
 
 try{
 
 const response =
 await fetch(
-ACCESS_API+'/api/keys',
+ACCESS_API + "/api/keys",
 {
-method:'POST',
+method:"POST",
 
 headers:{
-'Content-Type':'application/json'
+"Content-Type":
+"application/json"
 },
 
 body:JSON.stringify({})
@@ -597,38 +718,29 @@ if(!response.ok){
 
 throw new Error(
 data.error ||
-'Could not generate key'
+"Username generation failed."
 );
 
 }
 
 
-username=data.key;
+username =
+data.key;
 
 
-$('username').textContent=
+$("username").textContent =
 username;
 
 
-$('copyMsg').innerHTML=
-'<a href="' +
-MOVIE_SITE +
-'?key=' +
-encodeURIComponent(username) +
-'" style="color:#ff4f9d;font-weight:800">' +
-'OPEN MOVIE WEBSITE →' +
-'</a>';
-
-
-show('done');
+show("done");
 
 
 }catch(error){
 
-$('username').textContent=
-'ERROR';
+$("username").textContent =
+"ERROR";
 
-$('copyMsg').textContent=
+$("copyMsg").textContent =
 error.message;
 
 }
@@ -636,105 +748,159 @@ error.message;
 }
 
 
-/* COPY USERNAME */
+/* ==========================================
+   COPY
+   ========================================== */
 
 function copyUsername(){
 
-navigator.clipboard?.writeText(username);
+if(!username){
+return;
+}
 
-$('copyMsg').textContent=
-'Username copied.';
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(username);
+
+}else{
+
+const area =
+document.createElement("textarea");
+
+area.value =
+username;
+
+document.body.appendChild(area);
+
+area.select();
+
+document.execCommand("copy");
+
+area.remove();
 
 }
 
 
-/* OPEN MOVIE WEBSITE */
+$("copyMsg").textContent =
+"Username copied successfully.";
+
+}
+
+
+/* ==========================================
+   OPEN MOVIE WEBSITE
+   ========================================== */
 
 function openMovie(){
 
-location.href =
+if(!username){
+return;
+}
+
+
+window.location.href =
 MOVIE_SITE +
-'?key=' +
+"?key=" +
 encodeURIComponent(username);
 
 }
 
 
-/* HOME */
+/* ==========================================
+   HOME
+   ========================================== */
 
 function goHome(){
 
 clearInterval(timerId);
 
-show('home');
+show("home");
 
 }
 
 
-/* ADMIN LOGIN */
+/* ==========================================
+   ADMIN LOGIN
+   ========================================== */
 
 function adminLogin(){
 
+const user =
+$("adminUser").value.trim();
+
+const pass =
+$("adminPass").value;
+
+
 if(
-$('adminUser').value==='admin' &&
-$('adminPass').value==='biruxy123'
+user === "admin" &&
+pass === "biruxy123"
 ){
 
-show('admin');
+$("adminError").textContent = "";
+
+show("admin");
 
 render();
 
 }else{
 
-$('adminError').textContent=
-'Invalid username or password.';
+$("adminError").textContent =
+"Invalid username or password.";
 
 }
 
 }
 
 
-/* LOGOUT ADMIN */
+/* ==========================================
+   ADMIN LOGOUT
+   ========================================== */
 
 function logoutAdmin(){
 
-show('home');
+show("home");
 
 }
 
 
-/* CONTENT TYPE */
+/* ==========================================
+   CONTENT TYPE
+   ========================================== */
 
 function setType(t){
 
-type=t;
+type = t;
 
-$('moviesTab')
+$("moviesTab")
 .classList.toggle(
-'active',
-t==='MOVIES'
+"active",
+t === "MOVIES"
 );
 
-$('privateTab')
+$("privateTab")
 .classList.toggle(
-'active',
-t==='PRIVATE'
+"active",
+t === "PRIVATE"
 );
 
 }
 
 
-/* ADD CONTENT */
+/* ==========================================
+   ADD CONTENT
+   ========================================== */
 
 function addContent(){
 
-let title =
-$('title').value.trim();
+const title =
+$("title").value.trim();
 
 
 if(!title){
 
-alert('Enter a title.');
+alert("Please enter a title.");
 
 return;
 
@@ -743,36 +909,38 @@ return;
 
 items.push({
 
-type,
+type:type,
 
-title,
+title:title,
 
 poster:
-$('poster').value.trim(),
+$("poster").value.trim(),
 
 video:
-$('video').value.trim(),
+$("video").value.trim(),
 
 description:
-$('description').value.trim()
+$("description").value.trim()
 
 });
 
 
 localStorage.setItem(
-'adunlock_content',
+"adunlock_content",
 JSON.stringify(items)
 );
 
 
 [
-'title',
-'poster',
-'video',
-'description'
-].forEach(
-x=>$(x).value=''
-);
+"title",
+"poster",
+"video",
+"description"
+].forEach(function(id){
+
+$(id).value = "";
+
+});
 
 
 render();
@@ -780,34 +948,37 @@ render();
 }
 
 
-/* RENDER CONTENT */
+/* ==========================================
+   RENDER
+   ========================================== */
 
 function render(){
 
 if(!items.length){
 
-$('contentList').textContent=
-'No content added yet.';
+$("contentList").textContent =
+"No content added yet.";
 
 return;
 
 }
 
 
-$('contentList').innerHTML =
-items.map(
-(x,i)=>
+$("contentList").innerHTML =
+items.map(function(x,i){
 
-`<div style="
+return `
+<div style="
 padding:12px 0;
-border-bottom:1px solid #292d36
-">
+border-bottom:1px solid #292d36">
 
 <b>${safe(x.title)}</b>
 
 <br>
 
-<small>${x.type}</small>
+<small>
+${x.type}
+</small>
 
 <button
 onclick="removeItem(${i})"
@@ -815,28 +986,31 @@ style="
 float:right;
 background:none;
 border:0;
-color:#ff6b6b
-">
+color:#ff6b6b;
+cursor:pointer">
 
 Delete
 
 </button>
 
-</div>`
+</div>
+`;
 
-).join('');
+}).join("");
 
 }
 
 
-/* DELETE CONTENT */
+/* ==========================================
+   DELETE
+   ========================================== */
 
 function removeItem(i){
 
 items.splice(i,1);
 
 localStorage.setItem(
-'adunlock_content',
+"adunlock_content",
 JSON.stringify(items)
 );
 
@@ -845,42 +1019,49 @@ render();
 }
 
 
-/* SAFE TEXT */
+/* ==========================================
+   SAFE TEXT
+   ========================================== */
 
 function safe(s){
 
-return s.replace(
+return String(s || "").replace(
 /[&<>"']/g,
-m=>({
+function(m){
 
-'&':'&amp;',
-'<':'&lt;',
-'>':'&gt;',
-'"':'&quot;',
-"'":'&#039;'
+return {
 
-}[m])
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
 
-);
+}[m];
+
+});
 
 }
 
 
-/* ADMIN SHORTCUT */
+/* ==========================================
+   ADMIN SHORTCUT
+   CTRL + SHIFT + A
+   ========================================== */
 
 window.addEventListener(
-'keydown',
-e=>{
+"keydown",
+function(e){
 
 if(
 e.ctrlKey &&
 e.shiftKey &&
-e.key.toLowerCase()==='a'
+e.key.toLowerCase() === "a"
 ){
 
 e.preventDefault();
 
-show('adminLogin');
+show("adminLogin");
 
 }
 
